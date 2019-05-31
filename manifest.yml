@@ -3,6 +3,6 @@ applications:
 - name: simple-chat-n
   memory: 512M
   host: simple-chat-n
-  command: node ../frontend.js
+  command: node frontend.js
   build-pack: https://github.com/cloudfoundry/nodejs-buildpack
   instances: 1
