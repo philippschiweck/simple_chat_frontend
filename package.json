@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0",
-    "build": "ng build --output-path=../backend/dist && cpx manifest.yml ../backend/dist",
+    "build": "ng build --output-path=dist/ && cpx manifest.yml dist/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -32,6 +32,7 @@
     "cpx": "^1.5.0",
     "events": "^3.0.0",
     "file-saver": "^2.0.1",
+    "helmet": "^3.18.0",
     "material-components-web": "^1.0.1",
     "ngx-color-picker": "^7.5.0",
     "rxjs": "~6.3.3",
