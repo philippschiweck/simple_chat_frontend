@@ -1,0 +1,8 @@
+---
+applications:
+- name: simple-chat-n-combined
+  memory: 512M
+  host: simple-chat-n-combined
+  command: node backend.js
+  build-pack: https://github.com/cloudfoundry/nodejs-buildpack
+  instances: 1

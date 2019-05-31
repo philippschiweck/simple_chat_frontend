@@ -1,0 +1,42 @@
+h2{
+  user-select: none;
+}
+
+.fixed-header{
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+.list-background{
+  background-color: transparent;
+}
+
+#rooms {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#rooms li {
+  padding: 10px 10px;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.5s ease-out, font-size 0.5s ease-out;
+  user-select: none;
+  overflow: hidden;
+}
+
+#rooms li:hover {
+  background-color: lightgrey;
+  font-size: 110%;
+}
+
+.private-room{
+  color: blue;
+}
+
+.roomInput{
+  width: 100%;
+}

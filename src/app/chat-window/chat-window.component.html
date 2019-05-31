@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="chatlist-wrapper chat-background overflow-auto rounded border border-primary shadow p-3 mb-1 mt-3" id="chat" #chat>
+      <ul id="messages" class="message-box">
+        <li class="rounded ml-3 mr-3 p-1" *ngFor="let message of messages">
+          <div *ngIf="message.type == MessageType.ChatMessage">
+            <span class="message-time">{{message.date}}</span> | <span [ngStyle]="{'color': message.color}"><b>{{message.name}}</b></span>: <span class="message">{{message.message}}</span>
+          </div>
+          <div *ngIf="message.type == MessageType.MediaMessage">
+            <span class="message-time">{{message.date}}</span> | <span [ngStyle]="{'color': message.color}"><b>{{message.name}}</b></span>: <span class="message">{{message.message}}</span><br>
+            Attached File:<span class="download-link" (click)="downloadFile(message.fileKey)"> {{message.fileName}} <i class="fa fa-download" aria-hidden="true"></i> </span>
+          </div>
+          <div *ngIf="message.type == MessageType.ServerMessage" class="text-center">
+            <span class="message-server" >{{message.message}}</span>
+          </div>
+          <div *ngIf="message.type == MessageType.RoomMessage" class="text-center">
+            <span class="message-room">{{message.message}}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="input-wrapper m-4">
+      <input id="message-input" class="mr-1 rounded border border-primary shadow  p-2 mb-1" [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()"/>
+      <div class="image-upload">
+        <label for="file-input">
+          <i class="fa fa-paperclip fa-2x searchbar-i"></i>
+        </label>
+        <span *ngIf="file != null">Selected File: {{file.name}}</span>
+        <input type="file" id="file-input" name="avatar" (change)="onFileChange($event)"/>
+        <span *ngIf="file != null" class="pl-2" (click)="removeFile()"><i class="trashIcon fa fa-trash"></i></span>
+      </div>
+      <button class="w-100 mt-1 btn btn-primary p-2 rounded-1 shadow" (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>

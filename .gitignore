@@ -1,0 +1,8 @@
+#
+node_modules
+#
+.editorconfig
+#
+API_KEY.json
+#
+dist

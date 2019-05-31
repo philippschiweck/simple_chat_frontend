@@ -1,0 +1,61 @@
+<div class="login_wrapper" *ngIf="state.userState == 'notLoggedIn'">
+  <div class="hoverBox text-center">
+    <h2 class="pb-4">Welcome to the Simple Chat!</h2>
+    <button mat-flat-button color="primary" class="m-2 w-50" (click)="login()">Login</button>
+    <button mat-flat-button color="primary" class="m-2 w-50" (click)="register()">Register</button>
+  </div>
+</div>
+
+<div class="login_wrapper" *ngIf="state.userState == 'register'">
+  <div class="hoverBox text-center">
+    <h2 class="pb-4"><i class="fa fa-arrow-left mr-4 back-arrow" (click)="backState()"></i>Register</h2>
+    <mat-form-field>
+        <input matInput class="text-center" (keyup)="checkUsernameElligible(newUsername)" type="text" placeholder="Select Username" [(ngModel)]="newUsername" pattern="[A-Za-z]{4,15}$" maxlength="15" title="5 to 10 characters, only letters allowed.">
+    </mat-form-field>
+    <i class="fa fa-check mr-4 fa-2x checkmark" title="Username available!" *ngIf="userNameElligible && usernameAvailable"></i>
+    <i class="fa fa-times mr-4 fa-2x checkmark-x" title="Username NOT available!" *ngIf="userNameElligible && !usernameAvailable"></i><br>
+      <i class="info-text" *ngIf="newUsername.length > 0 && !userNameElligible">4-15 characters - only letters allowed!<br></i>
+      <mat-form-field>
+          <input matInput class="text-center" type="password" placeholder="Choose Password" [(ngModel)]="newPassword" pattern=".{5,}"(keyup)="$event.keyCode == 13 && register()" title="Please choose your password!">
+      </mat-form-field><br>
+      <i class="info-text" *ngIf="newPassword.length > 0 && newPassword.length < 5">Password must be at least 5 characters long!<br></i>
+      <mat-form-field>
+          <mat-select placeholder="Select Language" [(ngModel)]="selectedLanguage">
+              <mat-option *ngFor="let language of languages" [value]="language">
+                  {{language}}
+              </mat-option>
+          </mat-select>
+      </mat-form-field><br>
+     <button (click)="file.click()"mat-flat-button color="primary">Upload Profile Picture</button>
+      <input type="file" id="profileImageUpload" style="display:none" (change)="onFileChange($event)" accept="image/png, image/jpeg" #file><br>
+      <span *ngIf="profilePicture != null">Selected File: {{profilePicture.name}}</span>
+      <span *ngIf="profilePicture != null" class="pl-2" (click)="removeFile()"><i class="trashIcon fa fa-trash"></i></span><br>
+      <label for="color">Choose your color:</label><br>
+      <button mat-raised-button [(colorPicker)]="color" class="color-picker" [style.background]="color" id="color"></button><br>
+      <button mat-flat-button color="primary" class="m-2 w-50" (click)="register()">Register</button><br>
+  </div>
+</div>
+
+<div class="username_wrapper" *ngIf="state.userState == 'login'">
+  <div class="hoverBox text-center">
+    <h2><i class="fa fa-arrow-left mr-4 back-arrow" (click)="backState()"></i>Enter Username & Password:</h2>
+    <input class="w-50 p-2 m-2 text-center" type="text" placeholder="Username" [(ngModel)]="username" title="Please enter your username!"><br>
+    <input class="w-50 p-2 m-2 text-center" type="password" placeholder="Password" [(ngModel)]="password" (keyup)="$event.keyCode == 13 && login()" title="Please enter your password!"><br>
+      <i class="info-text" *ngIf="loginFailed">Incorrect username/password! Try again!</i>
+    <button mat-flat-button color="primary" class="m-2 w-50" (click)="login()">Login</button>
+  </div>
+</div>
+
+<div class="container-fluid site-background" *ngIf="state.userState == 'loggedIn'" id="background">
+  <div class="row">
+    <div class="chatroom-wrapper col-lg-2 pt-4">
+      <app-chatroomslist></app-chatroomslist>
+    </div>
+    <div class="chat-wrapper col-lg-8 pt-2">
+      <app-chat-window></app-chat-window>
+    </div>
+    <div class="userlist-wrapper col-lg-2 text-center pt-4">
+      <app-userlist></app-userlist>
+    </div>
+  </div>
+</div>

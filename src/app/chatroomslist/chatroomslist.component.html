@@ -1,0 +1,15 @@
+<div class="text-center list-background">
+  <div class="fixed-header"><h2>Chatrooms</h2></div>
+  <ul id="rooms" class="text-center">
+    <li *ngFor="let room of rooms" (click)="joinRoom(room)">
+      <span class="room" *ngIf="room.type == 'public'">{{room.name}}</span>
+      <span class="private-room" *ngIf="room.type == 'private'">{{room.name}}</span>
+    </li>
+    <li (click)="roomCreation = !roomCreation" *ngIf="!roomCreation">
+       + new Room
+    </li>
+    <li *ngIf="roomCreation">
+      <input class="roomInput text-center" [(ngModel)]="newRoomName" type="text" (keyup)="$event.keyCode == 13 && createNewRoom()">
+    </li>
+  </ul>
+</div>

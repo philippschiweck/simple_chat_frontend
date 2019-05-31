@@ -1,0 +1,28 @@
+h2{
+  user-select: none;
+}
+
+.userlist-wrapper{
+  position: relative;
+}
+
+#users { list-style-type: none; margin: 0; padding: 0; }
+#users li {
+  padding: 0px 10px;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.5s ease-out, font-size 0.5s ease-out;
+  user-select: none;
+}
+.checkbox{
+  margin: 5px;
+}
+
+.create_private{
+  cursor: pointer;
+}
+
+.create_private:hover{
+  background-color: lightgrey;
+  font-size: 110%;
+}

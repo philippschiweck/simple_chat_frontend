@@ -1,0 +1,14 @@
+<div class="userlist-wrapper">
+  <h2>Userlist</h2>
+  <ul id="users">
+    <li *ngFor="let user of users">
+      <div class="user" >
+          <input class="checkbox" type="checkbox" [(ngModel)]="user.checked">
+          {{user.name}}
+      </div>
+    </li>
+    <li class="create_private p-2" (click)="createPrivateChat()">
+      + create Private Chat
+    </li>
+  </ul>
+</div>
