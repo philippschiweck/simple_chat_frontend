@@ -10,7 +10,7 @@ const httpOptions = {
 
 @Injectable()
 export class ChatService {
-  private backendUrl = 'simple-chat-n-backend.eu-de.mybluemix.net'; // simple-chat-n-backend.eu-de.mybluemix.net
+  private backendUrl = 'https://simple-chat-n-backend.eu-de.mybluemix.net'; // simple-chat-n-backend.eu-de.mybluemix.net
   private socket;
   private username = '';
   private currentRoomId: String;
