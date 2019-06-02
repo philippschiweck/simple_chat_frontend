@@ -13,7 +13,7 @@ app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self' 'unsafe-eval' https://simple-chat-n-backend.eu-de.mybluemix.net"],
     styleSrc: ["'self' 'unsafe-inline'"],
-    scriptSrc: ["'self' https://cdnjs.cloudflare.com"]
+    scriptSrc: ["'self' 'unsafe-inline'"]
   }
 }));
 
