@@ -15,7 +15,8 @@ app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self' 'unsafe-eval' https://simple-chat-n-backend.eu-de.mybluemix.net"],
     styleSrc: ["'self' 'unsafe-inline'"],
-    scriptSrc: ["'self' 'unsafe-eval' http: https:"]
+    scriptSrc: ["'self' 'unsafe-eval' http: https:"],
+    connectSrc: ["'wss://simple-chat-n-backend.eu-de.mybluemix.net"]
   }
 }));
 
