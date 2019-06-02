@@ -2,6 +2,8 @@ let express = require('express');
 let app = express();
 let http = require('http').Server(app);
 let helmet = require('helmet')
+let secure = require('express-force-https');
+let hsts = require('hsts');
 
 let bodyParser = require('body-parser')
 
@@ -15,6 +17,12 @@ app.use(helmet.contentSecurityPolicy({
     styleSrc: ["'self' 'unsafe-inline'"],
     scriptSrc: ["'strict-dynamic' 'nonce-rAnd0m123' 'unsafe-inline' http: https:"]
   }
+}));
+
+app.use(secure);
+
+app.use(hsts({
+  maxAge: 31536000 // One year is recommended
 }));
 
 app.use(function (req, res, next) {
