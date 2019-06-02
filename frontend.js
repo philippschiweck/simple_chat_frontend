@@ -13,10 +13,10 @@ app.use(helmet());
 
 app.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: ["'self' 'unsafe-eval' https://simple-chat-n-backend.eu-de.mybluemix.net"],
+    defaultSrc: ["'self' 'unsafe-eval'"],
     styleSrc: ["'self' 'unsafe-inline'"],
     scriptSrc: ["'self' 'unsafe-eval' http: https:"],
-    connectSrc: ["'self' 'https://simple-chat-n-backend.eu-de.mybluemix.net"]
+    connectSrc: ["'self' 'unsafe-eval' 'simple-chat-n-backend.eu-de.mybluemix.net"]
   }
 }));
 
