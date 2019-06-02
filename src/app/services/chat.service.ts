@@ -16,7 +16,10 @@ export class ChatService {
   private currentRoomId: String;
 
   constructor(private http: HttpClient) {
-    this.socket = io(this.backendUrl);
+    this.socket = io(this.backendUrl, {
+      secure: true,
+      transports: ['websocket'],
+    });
     this.socket.on('connect', () => {
       this.selectName(this.username);
     });
