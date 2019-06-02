@@ -7,6 +7,15 @@ let bodyParser = require('body-parser')
 
 let port = process.env.PORT || 8080;
 
+app.use(helmet());
+
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'", 'simple-chat-n.eu-de.mybluemix.net'],
+    styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com']
+  }
+}));
+
 app.use(function (req, res, next) {
 
   // Website allowed
@@ -30,7 +39,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-app.use(helmet());
 
 app.use(express.static(__dirname + '/dist'));
 app.get("/*", (req, res) => {
