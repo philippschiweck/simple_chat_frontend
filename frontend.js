@@ -11,8 +11,9 @@ app.use(helmet());
 
 app.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: ["'self'", 'simple-chat-n.eu-de.mybluemix.net'],
-    styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com']
+    defaultSrc: ["'self' 'unsafe-eval'"],
+    styleSrc: ["'self' 'unsafe-inline'"],
+    scriptSrc: ["'self' https://cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval'"]
   }
 }));
 
