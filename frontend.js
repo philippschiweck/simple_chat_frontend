@@ -13,7 +13,7 @@ app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self' 'unsafe-eval'"],
     styleSrc: ["'self' 'unsafe-inline'"],
-    scriptSrc: ["'self' https://cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval'"]
+    scriptSrc: ["'self' https://cdnjs.cloudflare.com 'unsafe-eval'"]
   }
 }));
 
