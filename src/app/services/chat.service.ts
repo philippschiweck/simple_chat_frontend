@@ -52,7 +52,7 @@ export class ChatService {
         observer.next(data);
       });
     });
-  };
+  }
 
   public getMessages = () => {
     return new Observable(observer => {

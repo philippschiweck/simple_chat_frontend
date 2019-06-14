@@ -39,12 +39,16 @@ export class UserlistComponent implements OnInit {
           };
           this.users.push(newUser);
         } else if (data.type === UpdateType.UserLeft) {
-          const newUser = <User> {
+          /*const newUser = <User> {
             id: data.user.id,
             name: data.user.name,
             checked: false
-          };
-          this.users.splice(this.users.indexOf(newUser), 1);
+          };*/
+          for (let i = 0; i < this.users.length; i++) {
+            if (this.users[i].id === data.user.id) {
+              this.users.splice(i, 1);
+            }
+          }
         }
       });
   }

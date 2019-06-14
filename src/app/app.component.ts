@@ -1,6 +1,6 @@
 import {Component, EventEmitter, NgModule, OnDestroy, OnInit} from '@angular/core';
 import { ChatService} from './services/chat.service';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 
 interface State {
     userState: string;
@@ -43,10 +43,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-      if (location.protocol != 'https:') {
+      if (location.protocol !== 'https:') {
           location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
       }
-    this.selectedLanguage = "None";
+    this.selectedLanguage = 'None';
     this.username = '';
     this.loginFailed = false;
     this.newUsername = '';
@@ -80,9 +80,9 @@ export class AppComponent implements OnInit {
   private checkUsernameAvailable(name: string){
      this.usernameSubscription = this.chatService.checkUsername(name)
           .subscribe((data: any) => {
-          if(data.usernameAvailable){
+          if (data.usernameAvailable) {
               this.usernameAvailable = true;
-          }else{
+          } else {
               this.usernameAvailable = false;
           }
           return data.usernameAvailable;
@@ -90,10 +90,10 @@ export class AppComponent implements OnInit {
   }
 
   public login() {
-      if(this.state.userState == 'login'){
+      if (this.state.userState === 'login') {
           this.chatService.login(this.username, this.password)
               .subscribe((data: any) => {
-                  if(data.result){
+                  if (data.result) {
                       this.loginFailed = false;
                       this.state.userState = 'loggedIn';
                       this.chatService.selectName(this.username);
@@ -110,12 +110,12 @@ export class AppComponent implements OnInit {
   }
 
   public register() {
-      if(this.state.userState == 'register'){
+      if(this.state.userState === 'register') {
           this.checkUsernameAvailable(this.newUsername)
           if(this.usernameAvailable && this.newPassword.length >= 5){
               this.chatService.registerNewUser(this.newUsername, this.newPassword, this.color, this.selectedLanguage)
                   .subscribe((data: any) => {
-                      if(data.result){
+                      if (data.result) {
                           this.username = this.newUsername;
                           this.password = this.newPassword;
                           this.state.userState = 'login';
@@ -141,16 +141,16 @@ export class AppComponent implements OnInit {
     }
   }
 
-  public backState(){
+  public backState() {
       this.state.userState = 'notLoggedIn';
   }
 
   public onFileChange (event) {
       let file = event.target.files[0];
-      if(file.size <= 5242880){
+      if (file.size <= 5242880) {
           this.profilePicture = event.target.files[0];
       } else {
-          window.alert("Picture is too large! Max. size is 5mb!");
+          window.alert('Picture is too large! Max. size is 5mb!');
       }
   }
 
